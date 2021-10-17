@@ -1,0 +1,58 @@
+#include<stdio.h>
+#define MAX 100
+int partition(int arr[],int lb,int up)
+{
+	int temp,i,j,pivot;
+	i=lb+1;
+	j=up;
+	pivot=arr[lb];
+	while(i<=j)
+	{
+		while((arr[i]<pivot) && (i<up))
+		i++;
+		while(arr[j]>pivot)
+		j--;
+		if(i<j)
+		{
+			temp=arr[i];
+			arr[i]=arr[j];
+			arr[j]=temp;
+			i++;
+			j--;
+		}
+		else
+		i++;
+	}
+	arr[lb]=arr[j];
+	arr[j]=pivot;
+	return j;
+}
+void quick(int sort[],int lb,int up)
+{
+	int p;
+	if(lb<up)
+	{
+		p=partition(sort,lb,up);
+		quick(sort,lb,p-1);
+		quick(sort,p+1,up);
+	}
+}
+int main()
+{
+	int sort[MAX],n,i,j;
+	printf("\n enter the number of element of array ");
+	scanf("%d",&n);
+	printf("\n enter elements\n");
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&sort[i]);
+	}
+	quick(sort,0,n-1);
+	
+	printf("sorted list is:\n");
+	for(i=0;i<n;i++)
+	{
+		printf("%d ",sort[i]);
+	}
+	return 0;
+}
