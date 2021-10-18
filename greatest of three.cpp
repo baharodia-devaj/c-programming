@@ -1,11 +1,9 @@
-#include <stdio.h>
+#include <bits/stdc++.h>
 int main(void)
 {
-    float a, b, c,max;
+    float a, b, c,largest;
     printf("enter any 3 numbers\n");
-    scanf("%f %f %f", &a, &b, &c);
-    max=(a>=b)?a:b;
-    max=(max>=c)?max:c;
-    printf("%0.2f is largest", max);
+   largest = max{a,b,c};
+    cout(largest);
     return 0;
 }
